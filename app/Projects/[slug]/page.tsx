@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ChevronRight } from "lucide-react"
 import { ReactNode, useRef } from "react";
 import { motion } from "motion/react"
 import { useInView } from "motion/react"
@@ -8,6 +8,7 @@ import { getAllProjects, getProjectData, type ProjectData } from "@/lib/project"
 import { notFound } from "next/dist/client/components/not-found"
 import Link from "next/link";
 import Image from "next/image"
+import Footer from "@/components/footer";
 //Animation component that triggers EVERY time scrolled into view
 function AnimateInView({ 
     children, 
@@ -223,7 +224,86 @@ export default async function CaseStudy({ params }: { params: { slug: string } }
           <li>{project.interviewTakeaway[2]}</li>
         </ul>
 
+        <h2 className="text-2xl font-bold mb-4">The Problem</h2>
+        <p className="mb-8 whitespace-pre-line">
+         {project.problem}
+        </p>
+
+        <h2 className="text-2xl font-bold mb-4">Brainstorming Ideas</h2>
+        {/* Image */}
+        {project.brainstormImage.filter(image => image.url) // Filter out empty URLs
+        .map((image, index) => (
+        <div key={index}>
+          <img
+            src={image.url}
+            alt={`Brainstorm ${index + 1}`}
+            className="rounded-lg shadow-md max-w-full h-auto mt-4"
+          />
+          <p className="mt-8 mb-4">
+            {image.text}
+          </p>
+          </div>
+        ))}
+        
+        <h2 className="text-2xl font-bold mt-8">First Draft Concept</h2>
+        {/* Image */}
+        {project.sketchIdeas.filter(image => image.url) // Filter out empty URLs
+        .map((image, index) => (
+        <div key={index}>
+          <img
+            src={image.url}
+            alt={`Brainstorm ${index + 1}`}
+            className="rounded-lg shadow-md max-w-full h-auto mt-4"
+          />
+          <p className="mt-2 text-sm text-gray-600">
+            {image.text}
+          </p>
+          </div>
+        ))}
+
+        <h2 className="text-2xl font-bold mt-8">Highlight Solutions</h2>
+        {/* Image */}
+        {project.solutionImages.filter(image => image.url) // Filter out empty URLs
+        .map((image, index) => (
+        <div key={index}>
+          <img
+            src={image.url}
+            alt={`Brainstorm ${index + 1}`}
+            className="rounded-lg shadow-md max-w-full h-auto mt-4"
+          />
+          <p className="mt-2 text-sm text-gray-600 text-center">
+            {image.text}
+          </p>
+          </div>
+        ))}
+        
       </section>
+
+      {/* Testing & Results */}
+      <section className="max-w-4xl mx-auto px-6 mb-12">
+        <h2 className="text-2xl font-bold mb-4">Week 3: Testing via Maze</h2>
+        <p className="mb-8 whitespace-pre-line">
+         {project.testing}
+        </p>
+
+        <h2 className="text-2xl font-bold mb-4">Impact & Outcome</h2>
+        <p className="mb-8 whitespace-pre-line">
+         {project.impact}
+        </p>
+
+        <ul className="list-disc pl-8 mb-8 space-y-2">
+          <li>{project.outcome[0]}</li>
+          <li>{project.outcome[1]}</li>
+          <li>{project.outcome[2]}</li>
+        </ul>
+        <Link href="/">
+            <button className=" flex item-center border rounded-md px-4 py-2 text-sm">
+            Back Home <ChevronRight className="ml-1 h-4 w-4" />
+            </button>
+        </Link>
+      </section>
+      {/* Footer */}
+      <Footer/>
     </div>
   )
 }

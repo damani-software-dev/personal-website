@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react"
 import Header from "@/components/header"
 import { getAllProjects, type ProjectData } from "@/lib/project"
 import { useEffect, useState } from "react"
+import Footer from "@/components/footer";
 
 export default function projects() {
 
@@ -61,75 +62,58 @@ export default function projects() {
         {/* Flip Academy Project */}
         <div className="mb-16">
           <h2 className="mb-6 text-xl font-medium">Flip Academy</h2>
-          <div className="mb-4 overflow-hidden rounded-lg bg-[#4285F4]">
-            <Image
-              src="/case 1.svg?height=300&width=650"
-              alt="Flip Academy Project"
-              width={450}
-              height={300}
-              className="w-full object-cover"
-            />
-          </div>
-          <div className="flex items-start justify-between">
-            <h3 className="max-w-md text-lg font-medium">
-              Leveraging AI and Gamification to Improve Kids' Financial Literacy Skills
-            </h3>
-            <Link
+          <Link
               href={`/Projects/${projects[0]?.slug}`}
-              className="flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm"
+              className="px-4 py-2 text-sm"
             >
-              View Case Study <ChevronRight className="ml-1 h-4 w-4" />
+              <div className="mb-4 overflow-hidden rounded-lg bg-[#4285F4]">
+                <Image
+                  src="/case 1.svg?height=300&width=650"
+                  alt="Flip Academy Project"
+                  width={450}
+                  height={300}
+                  className="w-full object-cover"
+                />
+              </div>
+              <div className="flex items-start justify-between">
+                <h3 className="max-w-md text-lg font-medium">
+                  Leveraging AI and Gamification to Improve Kids' Financial Literacy Skills
+                </h3>
+                <button className=" flex item-center border rounded-md px-4 py-2 text-sm">
+                  View Case Study <ChevronRight className="ml-1 h-4 w-4" />
+                </button>
+              </div>
             </Link>
-          </div>
         </div>
 
         {/* Airspace Logistics Project */}
         <div className="mb-16">
           <h2 className="mb-6 text-xl font-medium">Airspace Logistics</h2>
-          <div className="mb-4 overflow-hidden rounded-lg bg-[#ffe4e6]">
-            <Image
-              src="/case 2.svg?height=300&width=650"
-              alt="Airspace Logistics Project"
-              width={650}
-              height={300}
-              className="w-full object-cover"
-            />
-          </div>
-          <div className="flex items-start justify-between">
-            <h3 className="max-w-md text-lg font-medium">Buying & Selling Cryptocurrency</h3>
-            <Link
-              href="/case-study/airspace-logistics"
-              className="flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm"
+          <Link
+              href={`/Projects/${projects[1]?.slug}`}
+              className=" px-4 py-2 text-sm"
             >
-              View Case Study <ChevronRight className="ml-1 h-4 w-4" />
+              <div className="mb-4 overflow-hidden rounded-lg bg-[#ffe4e6]">
+                <Image
+                  src="/case 2.svg?height=300&width=650"
+                  alt="Airspace Logistics Project"
+                  width={650}
+                  height={300}
+                  className="w-full object-cover"
+                />
+              </div>
+              <div className="flex items-start justify-between">
+                <h3 className="max-w-md text-lg font-medium">Optimizing Airspace User Experience and Efficiency</h3>
+                <button className="flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm">
+                  View Case Study <ChevronRight className="ml-1 h-4 w-4" />
+                </button>
+              </div>
             </Link>
-          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="mt-auto bg-[#f9fafb] py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold">Let's Create Your Story Next</h2>
-          <p className="mb-8 text-gray-600">
-            it's a story, a vibe, and a journey. Ready to make
-            <br />
-            yours unforgettable?
-          </p>
-          <p className="mb-6 text-gray-600">Need A Designer? Let's Talk!</p>
-          <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-            <a
-              href="mailto:damanibeckford18@gmail.com"
-              className="inline-block rounded bg-black px-4 py-2 text-md text-white"
-            >
-              damanibeckford18@gmail.com
-            </a>
-            <a href="tel:+18762944200" className="inline-block rounded border border-black px-4 py-2 text-md">
-              +1 (876) 2944200
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Footer */}
+      <Footer/>
     </div>
   )
 }
